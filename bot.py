@@ -2,7 +2,7 @@ import os
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
-BOT_TOKEN = os.getenv("8985397100:AAHnA4UoBePkwcuxmm36OmIpFKMwdaFmH44")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 CHANNEL_LINK = "https://t.me/+eZSf2nLG8U4wZTlk"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
