@@ -3,7 +3,6 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-CHANNEL_LINK = "https://t.me/+eZSf2nLG8U4wZTlk"
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     keyboard = [[InlineKeyboardButton("I Have Paid - Send Proof", url="https://t.me/gostbyte")]]
@@ -16,7 +15,14 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
     await update.message.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard))
 
-if __name__ == "__main__":
+def main():
+    if not BOT_TOKEN:
+        print("ERROR: BOT_TOKEN not set!")
+        return
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
+    print("Bot started - polling...")
     app.run_polling()
+
+if __name__ == "__main__":
+    main()
